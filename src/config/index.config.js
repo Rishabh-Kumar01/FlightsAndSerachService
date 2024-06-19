@@ -1,3 +1,4 @@
 module.exports = {
-  config: require("./serverConfig"),
+  serverConfig: require("./serverConfig"),
+  connection: require("./connection.config"),
 };

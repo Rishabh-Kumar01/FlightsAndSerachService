@@ -7,4 +7,5 @@ module.exports = {
   compression: require("compression"),
   expressValidator: require("express-validator"),
   dotenv: require("dotenv"),
+  bodyParser: require("body-parser"),
 };

@@ -1,4 +1,5 @@
 const utils = require("./utils/index.util");
+const config = require("./config/index.config");
 const routes = require("./routes/index.route");
 
 const app = utils.imports.express();
@@ -8,16 +9,19 @@ app.use(utils.imports.morgan("dev"));
 app.use(utils.imports.cors());
 app.use(utils.imports.helmet());
 app.use(utils.imports.compression());
-app.use(utils.imports.express.json());
+app.use(utils.imports.bodyParser.json());
+app.use(utils.imports.bodyParser.urlencoded({ extended: true }));
 
-// Options Routes
-app.use("/api/v1/options", routes.options);
+// Server & Database Connection
+const setupAndStartServer = () => {
+  app.listen(config.serverConfig.PORT, async () => {
+    console.log(`SERVER IS RUNNING ON PORT ${config.serverConfig.PORT}`);
+    // await config.connection();
+  });
+};
 
-// Server
-app.listen(utils.config.PORT, async () => {
-  console.log(`SERVER IS RUNNING ON PORT ${utils.config.PORT}`);
-  await utils.connection();
-});
+// Call the function to start the server and connect to the database
+setupAndStartServer();
 
 // Home Route
 app.get("/", (request, response) => {
