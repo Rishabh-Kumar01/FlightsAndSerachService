@@ -38,4 +38,4 @@
 - A city has may airports but one airport belongs to a city.
 - One airport can have many flights, but a flight belongs to one airport.
 
-![alt ER Diagram](FlightsAndSearchService ER Diagram.png)
+
