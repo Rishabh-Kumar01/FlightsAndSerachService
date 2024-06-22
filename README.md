@@ -33,9 +33,10 @@
 - Airport Table
 - City Table
 
-- A flight belongs to an airplane but one airplane can be used in multiple
-  flights.
+- A flight belongs to an airplane but one airplane can be used in multiple flights.
 - A city has may airports but one airport belongs to a city.
 - One airport can have many flights, but a flight belongs to one airport.
+
+  ![FlightsAndSearchSerivce ER Diagram](https://github.com/Rishabh-Kumar01/FlightsAndSerachService/assets/72819281/b3b33e04-09ee-424e-9b7b-26b638698d41)
 
 
