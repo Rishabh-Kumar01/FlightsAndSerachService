@@ -1,6 +1,13 @@
 const { City } = require("../models/index");
 
 class CityRepository {
+  constructor() {
+    if (CityRepository.instance) {
+      return CityRepository.instance;
+    }
+    CityRepository.instance = this;
+  }
+
   async createCity({ name }) {
     try {
       const city = await City.create({ name: name });
@@ -31,6 +38,7 @@ class CityRepository {
           id: cityId,
         },
       });
+      return city;
     } catch (error) {
       console.log("Something went wrong: Repository: updateCity");
       throw { error };
