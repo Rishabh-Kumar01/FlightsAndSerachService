@@ -16,6 +16,7 @@ app.use(utils.imports.bodyParser.urlencoded({ extended: true }));
 const setupAndStartServer = () => {
   app.listen(config.serverConfig.PORT, async () => {
     console.log(`SERVER IS RUNNING ON PORT ${config.serverConfig.PORT}`);
+
     // await config.connection();
   });
 };
