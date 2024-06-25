@@ -1,6 +1,6 @@
 const utils = require("./utils/index.util");
 const config = require("./config/index.config");
-const routes = require("./routes/index.route");
+const ApiRoutes = require("./routes/index.route");
 
 const app = utils.imports.express();
 
@@ -11,6 +11,9 @@ app.use(utils.imports.helmet());
 app.use(utils.imports.compression());
 app.use(utils.imports.bodyParser.json());
 app.use(utils.imports.bodyParser.urlencoded({ extended: true }));
+
+// Routes
+app.use("/api", ApiRoutes);
 
 // Server & Database Connection
 const setupAndStartServer = () => {

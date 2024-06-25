@@ -10,7 +10,7 @@ class CityService {
       const city = await this.cityRepository.createCity({ name: data.name });
       return city;
     } catch (error) {
-      conosle.log("Something went wrong: Service: createCity");
+      console.log("Something went wrong: Service: createCity");
       throw { error };
     }
   }
@@ -20,7 +20,7 @@ class CityService {
       const response = await this.cityRepository.deleteCity();
       return response;
     } catch (error) {
-      conosle.log("Something went wrong: Service: deleteCity");
+      console.log("Something went wrong: Service: deleteCity");
       throw { error };
     }
   }
@@ -30,7 +30,7 @@ class CityService {
       const city = await this.cityRepository.updateCity(cityId, data);
       return city;
     } catch (error) {
-      conosle.log("Something went wrong: Service: updateCity");
+      console.log("Something went wrong: Service: updateCity");
       throw { error };
     }
   }
@@ -40,7 +40,7 @@ class CityService {
       const city = await this.cityRepository.getCity(cityId);
       return city;
     } catch (error) {
-      conosle.log("Something went wrong: Service: getCity");
+      console.log("Something went wrong: Service: getCity");
       throw { error };
     }
   }

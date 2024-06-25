@@ -10,6 +10,7 @@ module.exports = {
         success: true,
         message: "City created successfully",
         data: city,
+        error: {},
       });
     } catch (error) {
       console.log(error);
@@ -29,6 +30,7 @@ module.exports = {
         success: true,
         message: "City deleted successfully",
         data: city,
+        error: {},
       });
     } catch (error) {
       console.log(error);
@@ -48,6 +50,7 @@ module.exports = {
         success: true,
         message: "City updated successfully",
         data: city,
+        error: {},
       });
     } catch (error) {
       console.log(error);
