@@ -42,3 +42,10 @@
   ![FlightsAndSearchSerivce ER Diagram](https://github.com/Rishabh-Kumar01/FlightsAndSerachService/assets/72819281/b3b33e04-09ee-424e-9b7b-26b638698d41)
 
 
+## Tables
+
+### City -> id, name, createdAt, updatedAt
+### Airport -> id, name, address, cityId, createdAt, updatedAt
+
+
+
