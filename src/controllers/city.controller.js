@@ -1,3 +1,4 @@
+const { filter } = require("compression");
 const { CityService } = require("../services/index.service");
 
 const cityService = new CityService();
@@ -85,7 +86,7 @@ module.exports = {
 
   getAll: async (req, res) => {
     try {
-      const cities = await cityService.getAllCities();
+      const cities = await cityService.getAllCities(req.query);
       return res.status(200).json({
         success: true,
         message: "Cities retrieved successfully",

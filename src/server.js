@@ -1,16 +1,16 @@
-const utils = require("./utils/index.util");
+const { imports } = require("./utils/index.util");
 const config = require("./config/index.config");
 const ApiRoutes = require("./routes/index.route");
 
-const app = utils.imports.express();
+const app = imports.express();
 
 // Middlewares
-app.use(utils.imports.morgan("dev"));
-app.use(utils.imports.cors());
-app.use(utils.imports.helmet());
-app.use(utils.imports.compression());
-app.use(utils.imports.bodyParser.json());
-app.use(utils.imports.bodyParser.urlencoded({ extended: true }));
+app.use(imports.morgan("dev"));
+app.use(imports.cors());
+app.use(imports.helmet());
+app.use(imports.compression());
+app.use(imports.bodyParser.json());
+app.use(imports.bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api", ApiRoutes);
