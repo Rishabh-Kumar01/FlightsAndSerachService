@@ -3,30 +3,39 @@ const router = require("../../utils/imports.util").express.Router();
 
 /**
  * Request Method - POST
- * Route - api/v1/city/create
+ * Route - api/v1/city
  * Summary : Create a new city
  */
 router.post("/city", CityController.create);
 
 /**
- * Request Method - GET
- * Route - api/v1/city/delete/:id
+ * Request Method - DELETE
+ * Route - api/v1/city/:id
  * Summary : Delete a city
  */
-router.delete("/delete/:id", CityController.delete);
+router.delete("/city/:id", CityController.delete);
 
 /**
- * Request Method - PUT
- * Route - api/v1/city/update/:id
+ * Request Method - PATCH
+ * Route - api/v1/city/:id
  * Summary : Update a city
  */
-router.put("/update/:id", CityController.update);
+router.patch("/city/:id", CityController.update);
 
 /**
  * Request Method - GET
- * Route - api/v1/city/get
+ * Route - api/v1/city/:id
+ * Summary : Get a city
+ */
+router.get("/city/:id", CityController.get);
+
+/**
+ * Request Method - GET
+ * Route - api/v1/city
  * Summary : Get all cities
  */
-router.get("/get/:id", CityController.get);
+router.get("/city", CityController.getAll);
+
+
 
 module.exports = router;

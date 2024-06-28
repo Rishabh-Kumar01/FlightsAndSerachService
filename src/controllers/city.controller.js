@@ -70,12 +70,33 @@ module.exports = {
         success: true,
         message: "City retrieved successfully",
         data: city,
+        error: {},
       });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
         success: false,
         message: "City not retrieved",
+        data: {},
+        error: error,
+      });
+    }
+  },
+
+  getAll: async (req, res) => {
+    try {
+      const cities = await cityService.getAllCities();
+      return res.status(200).json({
+        success: true,
+        message: "Cities retrieved successfully",
+        data: cities,
+        error: {},
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        success: false,
+        message: "Cities not retrieved",
         data: {},
         error: error,
       });
