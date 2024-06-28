@@ -1,6 +1,7 @@
 const { imports } = require("./utils/index.util");
 const config = require("./config/index.config");
 const ApiRoutes = require("./routes/index.route");
+const db = require("./models/index");
 
 const app = imports.express();
 
@@ -19,6 +20,21 @@ app.use("/api", ApiRoutes);
 const setupAndStartServer = () => {
   app.listen(config.serverConfig.PORT, async () => {
     console.log(`SERVER IS RUNNING ON PORT ${config.serverConfig.PORT}`);
+
+    if (process.env.SYNC_DB) {
+      await db.sequelize.sync({ alter: true });
+    }
+
+    const citywithAirports = await db.City.findAll({
+      attributes: ["name"],
+      include: {
+        model: db.Airport,
+        as: "airports",
+        attributes: ["name"],
+      },
+    });
+
+    console.log(citywithAirports);
 
     // await config.connection();
   });

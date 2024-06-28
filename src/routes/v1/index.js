@@ -38,6 +38,8 @@ router.get("/city/:id", CityController.get);
  */
 router.get("/city", CityController.getAll);
 
+// Airport Routes
+
 
 
 module.exports = router;
