@@ -13,12 +13,13 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      city_id: {
+      cityId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Cities",
           key: "id",
+          as: "cityId",
         },
         onUpdate: "CASCADE",
         onDelete: "CASCADE",

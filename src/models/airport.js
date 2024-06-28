@@ -1,4 +1,7 @@
 "use strict";
+
+const { on } = require("nodemon");
+
 const { Model } = require("../utils/index.util").imports.sequelize;
 module.exports = (sequelize, DataTypes) => {
   class Airport extends Model {
@@ -10,8 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Airport.belongsTo(models.City, {
-        foreignKey: "city_id",
+        foreignKey: "cityId",
         as: "city",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       });
     }
   }
@@ -25,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      city_id: {
+      cityId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

@@ -1,6 +1,8 @@
 const { CityController } = require("../../controllers/index.controller");
 const router = require("../../utils/imports.util").express.Router();
 
+// City Routes
+
 /**
  * Request Method - POST
  * Route - api/v1/city
@@ -32,7 +34,7 @@ router.get("/city/:id", CityController.get);
 /**
  * Request Method - GET
  * Route - api/v1/city
- * Summary : Get all cities
+ * Summary : Get all cities with filter - name
  */
 router.get("/city", CityController.getAll);
 
