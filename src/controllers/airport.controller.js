@@ -1,22 +1,22 @@
-const { CityService } = require("../services/index.service");
+const { AirportService } = require("../services/index.service");
 
-const cityService = new CityService();
+const airportService = new AirportService();
 
 module.exports = {
   create: async (req, res) => {
     try {
-      const city = await cityService.createCity(req.body);
+      const airport = await airportService.createAirport(req.body);
       return res.status(201).json({
         success: true,
-        message: "City created successfully",
-        data: city,
+        message: "Airport created successfully",
+        data: airport,
         error: {},
       });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
         success: false,
-        message: "City not created",
+        message: "Airport not created",
         data: {},
         error: error,
       });
@@ -25,18 +25,18 @@ module.exports = {
 
   delete: async (req, res) => {
     try {
-      const city = await cityService.deleteCity(req.params.id);
+      const airport = await airportService.deleteAirport(req.params.id);
       return res.status(200).json({
         success: true,
-        message: "City deleted successfully",
-        data: city,
+        message: "Airport deleted successfully",
+        data: airport,
         error: {},
       });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
         success: false,
-        message: "City not deleted",
+        message: "Airport not deleted",
         data: {},
         error: error,
       });
@@ -45,18 +45,21 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      const city = await cityService.updateCity(req.params.id, req.body);
+      const airport = await airportService.updateAirport(
+        req.params.id,
+        req.body
+      );
       return res.status(200).json({
         success: true,
-        message: "City updated successfully",
-        data: city,
+        message: "Airport updated successfully",
+        data: airport,
         error: {},
       });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
         success: false,
-        message: "City not updated",
+        message: "Airport not updated",
         data: {},
         error: error,
       });
@@ -65,18 +68,18 @@ module.exports = {
 
   get: async (req, res) => {
     try {
-      const city = await cityService.getCity(req.params.id);
+      const airport = await airportService.getAirport(req.params.id);
       return res.status(200).json({
         success: true,
-        message: "City retrieved successfully",
-        data: city,
+        message: "Airport retrieved successfully",
+        data: airport,
         error: {},
       });
     } catch (error) {
       console.log(error);
       return res.status(500).json({
         success: false,
-        message: "City not retrieved",
+        message: "Airport not retrieved",
         data: {},
         error: error,
       });
@@ -85,27 +88,7 @@ module.exports = {
 
   getAll: async (req, res) => {
     try {
-      const cities = await cityService.getAllCities(req.query);
-      return res.status(200).json({
-        success: true,
-        message: "Cities retrieved successfully",
-        data: cities,
-        error: {},
-      });
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({
-        success: false,
-        message: "Cities not retrieved",
-        data: {},
-        error: error,
-      });
-    }
-  },
-
-  getAirports: async (req, res) => {
-    try {
-      const airports = await cityService.getAirportsByCity(req.params.id);
+      const airports = await airportService.getAllAirports(req.query);
       return res.status(200).json({
         success: true,
         message: "Airports retrieved successfully",
@@ -122,4 +105,6 @@ module.exports = {
       });
     }
   },
+
+  
 };

@@ -1,4 +1,4 @@
-const { City } = require("../models/index");
+const { City, Airport } = require("../models/index");
 const { Op } = require("../utils/index.util").imports.sequelize;
 
 class CityRepository {
@@ -71,6 +71,21 @@ class CityRepository {
       return cities;
     } catch (error) {
       console.log("Something went wrong: Repository: getAllCities");
+      throw { error };
+    }
+  }
+
+  async getAirportsByCity(cityId) {
+    try {
+      const city = await City.findByPk(cityId, {
+        include: {
+          model: Airport,
+          as: "airports",
+        },
+      });
+      return city;
+    } catch (error) {
+      console.log("Something went wrong: Repository: getAirportsByCity");
       throw { error };
     }
   }
