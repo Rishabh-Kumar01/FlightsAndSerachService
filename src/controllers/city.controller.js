@@ -23,6 +23,26 @@ module.exports = {
     }
   },
 
+  bulkInsert: async (req, res) => {
+    try {
+      const cities = await cityService.bulkInsertCities(req.body);
+      return res.status(201).json({
+        success: true,
+        message: "Cities created successfully",
+        data: cities,
+        error: {},
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        success: false,
+        message: "Cities not created",
+        data: {},
+        error: error,
+      });
+    }
+  },
+
   delete: async (req, res) => {
     try {
       const city = await cityService.deleteCity(req.params.id);

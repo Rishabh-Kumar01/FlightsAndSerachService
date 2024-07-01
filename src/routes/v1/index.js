@@ -14,6 +14,13 @@ const router = require("../../utils/imports.util").express.Router();
 router.post("/city", CityController.create);
 
 /**
+ * Request Method - POST
+ * Route - api/v1/city/bulk-insert
+ * Summary : Create multiple cities
+ */
+router.post("/city/bulk-insert", CityController.bulkInsert);
+
+/**
  * Request Method - DELETE
  * Route - api/v1/city/:id
  * Summary : Delete a city
@@ -47,6 +54,8 @@ router.get("/city", CityController.getAll);
  * Summary : Get all airports of a city
  */
 router.get("/city/:id/airports", CityController.getAirports);
+
+
 
 // Airport Routes
 

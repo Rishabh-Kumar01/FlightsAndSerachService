@@ -15,6 +15,16 @@ class CityService {
     }
   }
 
+  async bulkInsertCities(data) {
+    try {
+      const cities = await this.cityRepository.bulkInsertCities(data);
+      return cities;
+    } catch (error) {
+      console.log("Something went wrong: Service: bulkInsertCities");
+      throw { error };
+    }
+  }
+
   async deleteCity(cityId) {
     try {
       const response = await this.cityRepository.deleteCity(cityId);
