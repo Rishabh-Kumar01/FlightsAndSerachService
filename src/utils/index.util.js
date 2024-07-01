@@ -3,4 +3,5 @@ module.exports = {
   axios: require("./axios.util"),
   responses: require("./responses.util"),
   errorFormatter: require("./errorFormatter.util"),
+  helper: require("./helper"),
 };

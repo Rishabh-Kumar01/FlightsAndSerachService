@@ -67,3 +67,9 @@ npx sequelize model:generate --name Airport --attributes name:String,address:Str
 ```
 npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:Integer
 ```
+
+### Flight- id, arrivalAirportId, departureAirportId, airplaneId, flightNumber, arrivalTime, departureTime, price, boardingGate, availableSeats, createdAt, updatedAt
+
+```
+npx sequelize model:generate --name Flight --attributes departureAirportId:integer,arrivalAirportId:integer,airplaneId:integer,flightNumber:string,departureTime:Date,arrivalTime:Date,price:integer,boardingGate:String,availableSeats:integer
+```

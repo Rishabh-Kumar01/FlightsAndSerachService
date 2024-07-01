@@ -9,11 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      arrivalAirportId: {
+      departureAirportId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      departureAirportId: {
+      arrivalAirportId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

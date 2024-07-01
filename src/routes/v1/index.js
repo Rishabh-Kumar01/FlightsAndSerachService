@@ -1,6 +1,7 @@
 const {
   CityController,
   AirportController,
+  FlightController,
 } = require("../../controllers/index.controller");
 const router = require("../../utils/imports.util").express.Router();
 
@@ -55,8 +56,6 @@ router.get("/city", CityController.getAll);
  */
 router.get("/city/:id/airports", CityController.getAirports);
 
-
-
 // Airport Routes
 
 /**
@@ -94,6 +93,20 @@ router.get("/airport/:id", AirportController.get);
  */
 router.get("/city", AirportController.getAll);
 
+// Flights Routes
 
+/**
+ * Request Method - POST
+ * Route - api/v1/flights
+ * Summary : Create a new flight
+ */
+router.post("/flights", FlightController.createFlight);
+
+/**
+ * Request Method - GET
+ * Route - api/v1/flights/:id
+ * Summary : Get a flight
+ */
+router.get("/flights/:id", FlightController.getFlight);
 
 module.exports = router;
