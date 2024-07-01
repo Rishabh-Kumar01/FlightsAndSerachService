@@ -1,7 +1,7 @@
 const { imports } = require("./utils/index.util");
 const config = require("./config/index.config");
 const ApiRoutes = require("./routes/index.route");
-const { Airport, City } = require("./models/index");
+const { Airplane } = require("./models/index");
 
 const app = imports.express();
 
@@ -25,6 +25,7 @@ const setupAndStartServer = () => {
       await db.sequelize.sync({ alter: true });
     }
 
+    
     // await config.connection();
   });
 };

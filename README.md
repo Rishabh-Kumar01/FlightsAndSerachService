@@ -45,7 +45,19 @@
 ## Tables
 
 ### City -> id, name, createdAt, updatedAt
+```
+npx sequelize model:generate --name City --attributes name:String
+```
+
 ### Airport -> id, name, address, cityId, createdAt, updatedAt
+```
+npx sequelize model:generate --name Airport --attributes name:String,address:String,cityId:integer
+```
+
+### Airplane -> id, modelNumber, capacity, createdAt, updatedAt
+```
+npx sequelize model:generate --name Airplane --attributes modelNumber:String,capacity:Integer
+```
 
 
 
