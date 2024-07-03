@@ -47,5 +47,28 @@ module.exports = {
         error: error,
       });
     }
-  }
+  },
+
+  async getAllFlights(req, res) {
+    try {
+      const flights = await flightService.getAllFlights(req.query);
+      return res.status(200).json({
+        success: true,
+        message: "Successfully retrieved all flights",
+        data: flights,
+        error: {},
+      });
+    } catch (error) {
+      console.log(
+        "Something went wrong in FlightController:getAllFlights",
+        error
+      );
+      return res.status(500).json({
+        success: false,
+        message: "Something went wrong while retrieving all flights",
+        data: {},
+        error: error,
+      });
+    }
+  },
 };

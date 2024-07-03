@@ -63,28 +63,28 @@ router.get("/city/:id/airports", CityController.getAirports);
  * Route - api/v1/airport
  * Summary : Create a new airport
  */
-router.post("/airport", AirportController.create);
+router.post("/airports", AirportController.create);
 
 /**
  * Request Method - DELETE
  * Route - api/v1/airport/:id
  * Summary : Delete a airport
  */
-router.delete("/airport/:id", AirportController.delete);
+router.delete("/airports/:id", AirportController.delete);
 
 /**
  * Request Method - PATCH
  * Route - api/v1/airport/:id
  * Summary : Update a airport
  */
-router.patch("/airport/:id", AirportController.update);
+router.patch("/airports/:id", AirportController.update);
 
 /**
  * Request Method - GET
  * Route - api/v1/airport/:id
  * Summary : Get a airport
  */
-router.get("/airport/:id", AirportController.get);
+router.get("/airports/:id", AirportController.get);
 
 /**
  * Request Method - GET
@@ -108,5 +108,12 @@ router.post("/flights", FlightController.createFlight);
  * Summary : Get a flight
  */
 router.get("/flights/:id", FlightController.getFlight);
+
+/**
+ * Request Method - GET
+ * Route - api/v1/flights
+ * Summary : Get all flights with filters
+ */
+router.get("/flights", FlightController.getAllFlights);
 
 module.exports = router;

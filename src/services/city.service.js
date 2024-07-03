@@ -1,18 +1,11 @@
 const { CityRepository } = require("../repository/index.repository");
+const CrudService = require("./crud.service");
 
-class CityService {
+class CityService extends CrudService {
   constructor() {
-    this.cityRepository = new CityRepository();
-  }
-
-  async createCity(data) {
-    try {
-      const city = await this.cityRepository.createCity({ name: data.name });
-      return city;
-    } catch (error) {
-      console.log("Something went wrong: Service: createCity");
-      throw { error };
-    }
+    const cityRepository = new CityRepository();
+    super(cityRepository);
+    this.cityRepository = cityRepository;
   }
 
   async bulkInsertCities(data) {
@@ -25,44 +18,14 @@ class CityService {
     }
   }
 
-  async deleteCity(cityId) {
+  async getAll(filter) {
     try {
-      const response = await this.cityRepository.deleteCity(cityId);
-      return response;
-    } catch (error) {
-      console.log("Something went wrong: Service: deleteCity");
-      throw { error };
-    }
-  }
-
-  async updateCity(cityId, data) {
-    try {
-      const city = await this.cityRepository.updateCity(cityId, data);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong: Service: updateCity");
-      throw { error };
-    }
-  }
-
-  async getCity(cityId) {
-    try {
-      const city = await this.cityRepository.getCity(cityId);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong: Service: getCity");
-      throw { error };
-    }
-  }
-
-  async getAllCities(filter) {
-    try {
-      const cities = await this.cityRepository.getAllCities({
+      const cities = await this.cityRepository.getAll({
         name: filter.name,
       });
       return cities;
     } catch (error) {
-      console.log("Something went wrong: Service: getAllCities");
+      console.log("Something went wrong: City Service: getAll");
       throw { error };
     }
   }

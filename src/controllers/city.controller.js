@@ -5,7 +5,7 @@ const cityService = new CityService();
 module.exports = {
   create: async (req, res) => {
     try {
-      const city = await cityService.createCity(req.body);
+      const city = await cityService.create(req.body);
       return res.status(201).json({
         success: true,
         message: "City created successfully",
@@ -45,7 +45,7 @@ module.exports = {
 
   delete: async (req, res) => {
     try {
-      const city = await cityService.deleteCity(req.params.id);
+      const city = await cityService.destory(req.params.id);
       return res.status(200).json({
         success: true,
         message: "City deleted successfully",
@@ -65,7 +65,7 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      const city = await cityService.updateCity(req.params.id, req.body);
+      const city = await cityService.update(req.params.id, req.body);
       return res.status(200).json({
         success: true,
         message: "City updated successfully",
@@ -85,7 +85,7 @@ module.exports = {
 
   get: async (req, res) => {
     try {
-      const city = await cityService.getCity(req.params.id);
+      const city = await cityService.get(req.params.id);
       return res.status(200).json({
         success: true,
         message: "City retrieved successfully",
@@ -105,7 +105,7 @@ module.exports = {
 
   getAll: async (req, res) => {
     try {
-      const cities = await cityService.getAllCities(req.query);
+      const cities = await cityService.getAll(req.query);
       return res.status(200).json({
         success: true,
         message: "Cities retrieved successfully",

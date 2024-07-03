@@ -5,7 +5,7 @@ const airportService = new AirportService();
 module.exports = {
   create: async (req, res) => {
     try {
-      const airport = await airportService.createAirport(req.body);
+      const airport = await airportService.create(req.body);
       return res.status(201).json({
         success: true,
         message: "Airport created successfully",
@@ -25,7 +25,7 @@ module.exports = {
 
   delete: async (req, res) => {
     try {
-      const airport = await airportService.deleteAirport(req.params.id);
+      const airport = await airportService.destory(req.params.id);
       return res.status(200).json({
         success: true,
         message: "Airport deleted successfully",
@@ -45,10 +45,7 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      const airport = await airportService.updateAirport(
-        req.params.id,
-        req.body
-      );
+      const airport = await airportService.update(req.params.id, req.body);
       return res.status(200).json({
         success: true,
         message: "Airport updated successfully",
@@ -68,7 +65,7 @@ module.exports = {
 
   get: async (req, res) => {
     try {
-      const airport = await airportService.getAirport(req.params.id);
+      const airport = await airportService.get(req.params.id);
       return res.status(200).json({
         success: true,
         message: "Airport retrieved successfully",
@@ -88,7 +85,7 @@ module.exports = {
 
   getAll: async (req, res) => {
     try {
-      const airports = await airportService.getAllAirports(req.query);
+      const airports = await airportService.getAll(req.query);
       return res.status(200).json({
         success: true,
         message: "Airports retrieved successfully",
@@ -105,6 +102,4 @@ module.exports = {
       });
     }
   },
-
-  
 };
