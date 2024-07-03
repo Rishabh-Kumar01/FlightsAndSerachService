@@ -108,6 +108,24 @@ router.post(
 );
 
 /**
+ * Request Method - DELETE
+ * Route - api/v1/flights/:id
+ * Summary : Delete a flight
+ */
+router.delete("/flights/:id", FlightController.deleteFlight);
+
+/**
+ * Request Method - PATCH
+ * Route - api/v1/flights/:id
+ * Summary : Update a flight
+ */
+router.patch(
+  "/flights/:id",
+  FlightMiddleware.validateUpdateFlight,
+  FlightController.updateFlight
+);
+
+/**
  * Request Method - GET
  * Route - api/v1/flights/:id
  * Summary : Get a flight

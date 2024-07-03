@@ -2,24 +2,25 @@ const {
   FlightRepository,
   AirplaneRepository,
 } = require("../repository/index.repository");
+const CrudService = require("./crud.service");
 const { helper } = require("../utils/index.util");
 
-class FlightService {
+class FlightService extends CrudService {
   constructor() {
-    this.flightRepository = new FlightRepository();
+    const flightRepository = new FlightRepository();
+    super(flightRepository);
+    this.flightRepository = flightRepository;
     this.airplaneRepository = new AirplaneRepository();
   }
 
-  async createFlight(data) {
+  async create(data) {
     try {
       helper.validateFlightTimes(data.departureTime, data.arrivalTime);
 
-      const airplane = await this.airplaneRepository.getAirplane(
-        data.airplaneId
-      );
-      const flight = await this.flightRepository.createFlight({
-        ...data,
+      const airplane = await this.airplaneRepository.get(data.airplaneId);
 
+      const flight = await this.flightRepository.create({
+        ...data,
         availableSeats: airplane.capacity,
       });
       return flight;
@@ -29,19 +30,9 @@ class FlightService {
     }
   }
 
-  async getFlight(id) {
+  async getAll(filter) {
     try {
-      const flight = await this.flightRepository.getFlight(id);
-      return flight;
-    } catch (error) {
-      console.log("Something went wrong: Service: getFlight");
-      throw { error };
-    }
-  }
-
-  async getAllFlights(data) {
-    try {
-      const flights = await this.flightRepository.getAllFlights(data);
+      const flights = await this.flightRepository.getAll(filter);
       return flights;
     } catch (error) {
       console.log("Something went wrong: Service: getAllFlights");

@@ -1,13 +1,10 @@
 const { Flight } = require("../models/index");
 const { Op } = require("../utils/imports.util").sequelize;
+const CrudRepository = require("./crud.repository");
 
-class FlightRepository {
+class FlightRepository extends CrudRepository {
   constructor() {
-    if (FlightRepository.instance) {
-      return FlightRepository.instance;
-    }
-
-    FlightRepository.instance = this;
+    super(Flight);
   }
 
   #createFlight(data) {
@@ -39,27 +36,7 @@ class FlightRepository {
     return filter;
   }
 
-  async createFlight(data) {
-    try {
-      const flight = await Flight.create(data);
-      return flight;
-    } catch (error) {
-      console.log("Something went wrong: Repository: createFlight");
-      throw { error };
-    }
-  }
-
-  async getFlight(id) {
-    try {
-      const flight = await Flight.findByPk(id);
-      return flight;
-    } catch (error) {
-      console.log("Something went wrong: Repository: getFlight");
-      throw { error };
-    }
-  }
-
-  async getAllFlights(filter) {
+  async getAll(filter) {
     try {
       const filterObject = this.#createFlight(filter);
       const flights = await Flight.findAll({
@@ -67,7 +44,7 @@ class FlightRepository {
       });
       return flights;
     } catch (error) {
-      console.log("Something went wrong: Repository: getAllFlights");
+      console.log("Something went wrong: Flight Repository: getAll");
       throw { error };
     }
   }

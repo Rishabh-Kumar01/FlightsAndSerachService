@@ -6,7 +6,10 @@ const cityService = new CityService();
 module.exports = {
   create: async (req, res) => {
     try {
-      const city = await cityService.create(req.body);
+      const cityRequestData = {
+        name: req.body.name,
+      };
+      const city = await cityService.create(cityRequestData);
       return res.status(ResponseCodes.SuccessCodes.CREATED).json({
         success: true,
         message: "City created successfully",
@@ -26,7 +29,22 @@ module.exports = {
 
   bulkInsert: async (req, res) => {
     try {
-      const cities = await cityService.bulkInsertCities(req.body);
+      const cityRequestData = req.body.map((city) => {
+        return {
+          name: city.name.trim(),
+        };
+      });
+
+      if (cityRequestData.length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: "Cities not created",
+          data: {},
+          error: { message: "No cities provided" },
+        });
+      }
+
+      const cities = await cityService.bulkInsertCities(cityRequestData);
       return res.status(ResponseCodes.SuccessCodes.CREATED).json({
         success: true,
         message: "Cities created successfully",
@@ -66,7 +84,10 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      const city = await cityService.update(req.params.id, req.body);
+      const cityRequestData = {
+        name: req.body.name,
+      };
+      const city = await cityService.update(req.params.id, cityRequestData);
       return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "City updated successfully",

@@ -6,7 +6,12 @@ const airportService = new AirportService();
 module.exports = {
   create: async (req, res) => {
     try {
-      const airport = await airportService.create(req.body);
+      const airportRequestData = {
+        name: req.body.name,
+        cityId: req.body.cityId,
+        address: req.body.address,
+      };
+      const airport = await airportService.create(airportRequestData);
       return res.status(ResponseCodes.SuccessCodes.CREATED).json({
         success: true,
         message: "Airport created successfully",
@@ -46,7 +51,13 @@ module.exports = {
 
   update: async (req, res) => {
     try {
-      const airport = await airportService.update(req.params.id, req.body);
+      const airportRequestData = {
+        name: req.body.name,
+      };
+      const airport = await airportService.update(
+        req.params.id,
+        airportRequestData
+      );
       return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Airport updated successfully",
