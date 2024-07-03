@@ -3,6 +3,7 @@ const {
   AirportController,
   FlightController,
 } = require("../../controllers/index.controller");
+const { FlightMiddleware } = require("../../middlewares/index.middleware");
 const router = require("../../utils/imports.util").express.Router();
 
 // City Routes
@@ -100,7 +101,11 @@ router.get("/city", AirportController.getAll);
  * Route - api/v1/flights
  * Summary : Create a new flight
  */
-router.post("/flights", FlightController.createFlight);
+router.post(
+  "/flights",
+  FlightMiddleware.validateCreateFlight,
+  FlightController.createFlight
+);
 
 /**
  * Request Method - GET
