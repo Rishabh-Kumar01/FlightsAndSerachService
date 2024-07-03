@@ -1,4 +1,5 @@
 const { CityService } = require("../services/index.service");
+const { ResponseCodes } = require("../utils/index.util");
 
 const cityService = new CityService();
 
@@ -6,7 +7,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       const city = await cityService.create(req.body);
-      return res.status(201).json({
+      return res.status(ResponseCodes.SuccessCodes.CREATED).json({
         success: true,
         message: "City created successfully",
         data: city,
@@ -26,7 +27,7 @@ module.exports = {
   bulkInsert: async (req, res) => {
     try {
       const cities = await cityService.bulkInsertCities(req.body);
-      return res.status(201).json({
+      return res.status(ResponseCodes.SuccessCodes.CREATED).json({
         success: true,
         message: "Cities created successfully",
         data: cities,
@@ -46,7 +47,7 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const city = await cityService.destory(req.params.id);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "City deleted successfully",
         data: city,
@@ -66,7 +67,7 @@ module.exports = {
   update: async (req, res) => {
     try {
       const city = await cityService.update(req.params.id, req.body);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "City updated successfully",
         data: city,
@@ -86,7 +87,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       const city = await cityService.get(req.params.id);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "City retrieved successfully",
         data: city,
@@ -106,7 +107,7 @@ module.exports = {
   getAll: async (req, res) => {
     try {
       const cities = await cityService.getAll(req.query);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Cities retrieved successfully",
         data: cities,
@@ -126,7 +127,7 @@ module.exports = {
   getAirports: async (req, res) => {
     try {
       const airports = await cityService.getAirportsByCity(req.params.id);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Airports retrieved successfully",
         data: airports,

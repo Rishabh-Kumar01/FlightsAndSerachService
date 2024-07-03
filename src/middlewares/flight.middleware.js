@@ -1,5 +1,6 @@
+const { ResponseCodes } = require("../utils/index.util");
+
 const validateCreateFlight = async (req, res, next) => {
-  console.log(req.body);
   if (
     !req.body.flightNumber ||
     !req.body.departureAirportId ||
@@ -9,7 +10,7 @@ const validateCreateFlight = async (req, res, next) => {
     !req.body.airplaneId ||
     !req.body.price
   ) {
-    return res.status(400).json({
+    return res.status(ResponseCodes.ClientErrorCodes.BAD_REQUEST).json({
       data: {},
       success: false,
       message: "Invalid request body for creating flight",

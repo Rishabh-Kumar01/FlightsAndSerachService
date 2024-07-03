@@ -1,4 +1,5 @@
 const { AirportService } = require("../services/index.service");
+const { ResponseCodes } = require("../utils/index.util");
 
 const airportService = new AirportService();
 
@@ -6,7 +7,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       const airport = await airportService.create(req.body);
-      return res.status(201).json({
+      return res.status(ResponseCodes.SuccessCodes.CREATED).json({
         success: true,
         message: "Airport created successfully",
         data: airport,
@@ -26,7 +27,7 @@ module.exports = {
   delete: async (req, res) => {
     try {
       const airport = await airportService.destory(req.params.id);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Airport deleted successfully",
         data: airport,
@@ -46,7 +47,7 @@ module.exports = {
   update: async (req, res) => {
     try {
       const airport = await airportService.update(req.params.id, req.body);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Airport updated successfully",
         data: airport,
@@ -66,7 +67,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       const airport = await airportService.get(req.params.id);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Airport retrieved successfully",
         data: airport,
@@ -86,7 +87,7 @@ module.exports = {
   getAll: async (req, res) => {
     try {
       const airports = await airportService.getAll(req.query);
-      return res.status(200).json({
+      return res.status(ResponseCodes.SuccessCodes.OK).json({
         success: true,
         message: "Airports retrieved successfully",
         data: airports,
