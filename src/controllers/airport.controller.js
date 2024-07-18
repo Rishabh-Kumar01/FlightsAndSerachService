@@ -29,6 +29,26 @@ module.exports = {
     }
   },
 
+  bulkInsertAirports: async (req, res) => {
+    try {
+      const airports = await airportService.bulkInsertAirports(req.body);
+      return res.status(ResponseCodes.SuccessCodes.CREATED).json({
+        success: true,
+        message: "Airports created successfully",
+        data: airports,
+        error: {},
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        success: false,
+        message: "Airports not created",
+        data: {},
+        error: error,
+      });
+    }
+  },
+
   delete: async (req, res) => {
     try {
       const airport = await airportService.destory(req.params.id);

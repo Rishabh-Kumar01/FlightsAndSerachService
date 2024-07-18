@@ -12,14 +12,26 @@ module.exports = {
       departureAirportId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "Airports",
+          key: "id",
+        },
       },
       arrivalAirportId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "Airports",
+          key: "id",
+        },
       },
       airplaneId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "Airplanes",
+          key: "id",
+        },
       },
       flightNumber: {
         type: Sequelize.STRING,

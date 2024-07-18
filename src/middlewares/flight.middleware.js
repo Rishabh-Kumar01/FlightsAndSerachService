@@ -26,7 +26,8 @@ const validateUpdateFlight = async (req, res, next) => {
     !req.body.arrivalAirportId &&
     !req.body.departureTime &&
     !req.body.arrivalTime &&
-    !req.body.price
+    !req.body.price &&
+    !req.body.availableSeats
   ) {
     return res.status(ResponseCodes.ClientErrorCodes.BAD_REQUEST).json({
       data: {},

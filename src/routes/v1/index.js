@@ -67,6 +67,13 @@ router.get("/city/:id/airports", CityController.getAirports);
 router.post("/airports", AirportController.create);
 
 /**
+ * Request Method - POST
+ * Route - api/v1/airports/bulk-insert
+ * Summary : Create multiple airports
+ */
+router.post("/airports/bulk-insert", AirportController.bulkInsertAirports);
+
+/**
  * Request Method - DELETE
  * Route - api/v1/airport/:id
  * Summary : Delete a airport

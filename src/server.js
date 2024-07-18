@@ -1,7 +1,7 @@
 const { imports } = require("./utils/index.util");
 const config = require("./config/index.config");
 const ApiRoutes = require("./routes/index.route");
-const { Airplane } = require("./models/index");
+const db = require("./models/index");
 
 const app = imports.express();
 
@@ -21,11 +21,10 @@ const setupAndStartServer = () => {
   app.listen(config.serverConfig.PORT, async () => {
     console.log(`SERVER IS RUNNING ON PORT ${config.serverConfig.PORT}`);
 
-    if (process.env.SYNC_DB) {
+    if (config.serverConfig.DB_SYNC === "true") {
       await db.sequelize.sync({ alter: true });
     }
 
-    
     // await config.connection();
   });
 };

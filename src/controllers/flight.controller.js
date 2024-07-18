@@ -44,6 +44,7 @@ module.exports = {
         departureTime: req.body.departureTime,
         arrivalTime: req.body.arrivalTime,
         price: req.body.price,
+        availableSeats: req.body.availableSeats,
       };
       const flight = await flightService.update(
         req.params.id,
