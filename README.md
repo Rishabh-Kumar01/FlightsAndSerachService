@@ -1,5 +1,16 @@
 # Welcome to Flights Service
 
+## GitHub repository links for the other services in this microservice architecture and API Gateway:
+
+- Airline API Gateway -
+  [Github Repository Link](https://github.com/Rishabh-Kumar01/Airline-API-Gateway)
+- Auth Service -
+  [GitHub Repository Link](https://github.com/Rishabh-Kumar01/Auth-Service)
+- Reminder Service -
+  [GitHub Repository Link](https://github.com/Rishabh-Kumar01/Reminder-Service)
+- Booking Service -
+  [GitHub Repository Link](https://github.com/Rishabh-Kumar01/BookingService)
+
 ## Project Setup
 
 - Clone the project on your local
